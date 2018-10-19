@@ -1,0 +1,197 @@
+/**
+ * Created by rballantyne on 12/29/14.
+ *
+ * Contains convenience functions for browser operations, such as setting a checkbox to a specific value,
+ *  that will be useful in multiple places.
+ */
+
+var user = require('../../core/CEAUserList');
+var request = require('request-promise');
+var env = require('../../config/env');
+
+var HelperFunctions = function () {
+    var that = this;
+
+    this.getCurrentYear = function () {
+        var currentDate = new Date();
+        return currentDate.getFullYear().toString();
+    };
+
+    /**
+     * Set a checkbox to be either selected or not, based on whether the desiredState parameter is true or false.
+     *
+     * @param locator A By object that locates the checkbox.
+     * @param desiredState A boolean dictating the desired selected state of the checkbox.
+     */
+    this.setCheckboxTo = function (locator, desiredState) {
+        var checkbox = element(locator);
+
+        checkbox.isSelected().then(function (actualState) {
+            if (actualState !== desiredState) {
+                checkbox.click();
+            }
+        });
+    };
+
+    /** Get the selected option text from dropdown
+     * @author Chris Koerber
+     * @param locator An element by object that locates the dropbox
+     * @returns text for selected option in dropdown
+     */
+    this.getDropdownText = function (locator) {
+        return locator.$('option:checked').getText().then(function (text) {
+            return text;
+        });
+    };
+
+    /** Selects dropdown option by index number
+     *
+     * @param dropdownElement
+     * @param optionNum number
+     */
+    this.selectDropdownbyNum = function (dropdownElement, optionNum) {
+        if (typeof(optionNum) == "number") {
+            var options = dropdownElement.all(by.tagName('option'))
+                .then(function (options) {
+                    options[optionNum].click();
+                });
+        }
+    };
+
+    /**
+     * Selects dropdown option by name
+     * @param dropdownElement locator An element by object that locates the dropbox
+     * @param optionName string
+     */
+    this.selectDropdownbyOption = function (dropdownElement, optionName) {
+        if (optionName) {
+            dropdownElement.element(by.cssContainingText('option', optionName)).click();
+        }
+    };
+
+    /**
+     *
+     * @returns Return Classic CEA HREF as String
+     */
+    this.ceaClassicHref = function ceaClassicHref() {
+        var HrefPath = browser.params.classicCEALink;
+        var ceaHref = env.baseUrl + HrefPath;
+
+        return ceaHref.toString();
+    };
+
+    this.ceaEnterpriseHref = function ceaEnterpriseHref() {
+        var HrefPath = browser.params.enterpriseCEALink;
+        var ceaHref = env.baseUrl + HrefPath;
+
+        return ceaHref.toString();
+    };
+    this.hasClass = function (element, cls) {
+        return element.getAttribute('class').then(function (classes) {
+            return classes.split(' ').indexOf(cls) !== -1;
+        });
+    };
+
+    this.toHaveText = function () {
+        return {
+            compare: function (actual, expectedText) {
+                return {
+                    pass: actual.getText().then(function (actualText) {
+                        return actualText === expectedText;
+                    })
+                };
+            }
+        };
+    };
+
+    this.generateAuthorizationToken = function (requestURI, requestMethod, requestPassword) {
+        var CryptoJS = require('crypto-js');
+        var authURI = requestURI,
+            authKey,
+            authKeyBytes,
+            authKeyBase64,
+            hmac,
+            hash;
+
+        //This needs to be set for encryption. You should know in your test what method you are using when you make the request
+        if (!requestMethod || typeof requestMethod !== "string" || requestMethod === "") {
+            requestMethod = "GET";
+        } else {
+            requestMethod = requestMethod.toUpperCase();
+        }
+
+        hmac = CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA1, requestPassword);
+
+        hmac.update(requestMethod + authURI);
+        hash = hmac.finalize();
+        authKey = hash.toString(CryptoJS.enc.Base64);
+        authKeyBytes = CryptoJS.enc.Utf8.parse(authKey);
+        authKeyBase64 = CryptoJS.enc.Base64.stringify(authKeyBytes);
+        return "Basic " + authKeyBase64;
+    };
+
+    this.deleteLayerAPI = function (layerName) {
+
+        if (typeof layerName !== "string") {
+            return false;
+        }
+
+        return browser.executeScript("return window.localStorage.getItem('cfClient');").then(function (res) {
+            console.log(res);
+            return browser.manage().getCookie('session').then(function (cookie) {
+                var authToken = that.generateAuthorizationToken("/ceaEnterprise/api/private/1.0/state_machine/delete/layer/" + layerName, "DELETE", user.authUsers.rootUser.password);
+                var params = {
+                    method: "DELETE",
+                    url: env.baseUrl + "/ceaEnterprise/api/private/1.0/state_machine/delete/layer/" + layerName,
+                    resolveWithFullResponse: true,
+                    headers: {
+                        Authorization: authToken,
+                        cfUser: user.authUsers.rootUser.username,
+                        cfClient: res,
+                        Cookie: 'session=' + cookie.value
+                    }
+                };
+
+                return request(params)
+                    .then(function (response) {
+                        return response.statusCode;
+                    })
+                    .catch(function (response) {
+                        return response.statusCode;
+                    });
+            });
+
+        });
+
+    };
+
+    this.changeFocusPopup = function () {
+        var handlePromise;
+        handlePromise = browser.getAllWindowHandles();
+        var handles = handlePromise.then(function (handles) {
+            popUpHandle = handles[1];
+            var handle = browser.switchTo().window(popUpHandle);
+            handle = browser.getWindowHandle();
+            expect(handle).toEqual(popUpHandle);
+            browser.driver.executeScript('window.focus();');
+        });
+    };
+
+    this.changeFocusMain = function () {
+        var handlePromise;
+        handlePromise = browser.getAllWindowHandles();
+        var handles = handlePromise.then(function (handles) {
+            mainHandle = handles[0];
+            var handle = browser.switchTo().window(mainHandle);
+            handle = browser.getWindowHandle();
+            expect(handle).toEqual(mainHandle);
+            browser.driver.executeScript('window.focus();');
+        });
+    };
+
+    this.getTextFromMultipleElements = function (text1, text2) {
+        return text1 + " " + text2;
+    };
+};
+
+module.exports = HelperFunctions;

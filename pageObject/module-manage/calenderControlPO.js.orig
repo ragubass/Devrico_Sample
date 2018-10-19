@@ -1,0 +1,96 @@
+/**
+ * Created by ragu.s on 1/5/2015.
+ *
+ * Clicking the Legend icon
+ *
+ * Check the colors and text beside colors .
+ */
+
+var calloc = require('../../uiMap/uimap-manage/calenderControlLocators');
+
+exports.navigationPageButtonClick = function () {
+    var navigationpagebuttonclick = element(calloc.navigationpagebutton);
+    navigationpagebuttonclick.click();
+};
+
+exports.datalayerlinkclick = function () {
+    element(calloc.datalayerslinkclick).click();
+};
+
+exports.manageModuleClick = function () {
+    element(calloc.manageModule).click();
+};
+
+exports.datasourcelinkclick = function () {
+    element(calloc.datasourceclick).click();
+};
+
+exports.LegendButtonClick = function () {
+    element(calloc.LegendButton).click();
+};
+
+exports.Redcolordate = function () {
+    var Redcolor = element(calloc.Redcolordate);
+    Redcolor.getCssValue(calloc.RedcolorcssValue).then(function (colorCssValue) {
+        expect(colorCssValue).toEqual('rgba(255, 0, 0, 1)');
+    });
+};
+
+exports.verifyRedcolorText = function () {
+    var Redcolortext = element(calloc.Redcolordatetext);
+    var verifyRedText = Redcolortext.getText();
+    expect(verifyRedText).toEqual('Data changed since last view run');
+};
+
+exports.Greencolordate = function () {
+    var Greencolor = element(calloc.Greencolordate);
+    Greencolor.getCssValue(calloc.GreencolorcssValue).then(function (colorCssValue) {
+        expect(colorCssValue).toEqual('rgba(0, 140, 35, 1)');
+    });
+};
+
+exports.verifyGreencolorText = function () {
+    var Greencolortext = element(calloc.Greencolordatetext);
+    var verifyRedText = Greencolortext.getText();
+    expect(verifyRedText).toEqual('Views have been run');
+};
+
+exports.Goldcolordate = function () {
+    var Goldcolor = element(calloc.Goldcolordate);
+    Goldcolor.getCssValue(calloc.GoldcolorcssValue).then(function (colorCssValue) {
+        expect(colorCssValue).toEqual('rgba(223, 183, 83, 1)');
+    });
+};
+
+exports.verifyGoldcolorText = function () {
+    var Goldcolortext = element(calloc.Goldcolordatetext);
+    var verifyRedText = Goldcolortext.getText();
+    expect(verifyRedText).toEqual('Data loaded, but not certified');
+};
+
+exports.Graycolordate = function () {
+    var Graycolor = element(calloc.Graycolordate);
+    Graycolor.getCssValue(calloc.GraycolorcssValue).then(function (colorCssValue) {
+        expect(colorCssValue).toEqual('rgba(230, 230, 230, 1)');
+    });
+};
+
+exports.verifyGraycolorText = function () {
+    var Graycolortext = element(calloc.Graycolordatetext);
+    var verifyRedText = Graycolortext.getText();
+    expect(verifyRedText).toEqual('No Data');
+};
+exports.Blackcolordate = function () {
+    var Blackcolor = element(calloc.Blackcolordate);
+    Blackcolor.getCssValue(calloc.BlackcolorcssValue).then(function (colorCssValue) {
+        expect(colorCssValue).toEqual('rgba(0, 0, 0, 1)');
+    });
+};
+exports.verifyBlackcolorText = function () {
+    var Blackcolortext = element(calloc.Blackcolordatetext);
+    var verifyRedText = Blackcolortext.getText();
+    expect(verifyRedText).toEqual('Data successfully loaded');
+};
+exports.closecalendercontrolwindow = function () {
+    element(calloc.closecalenderwindow).click();
+};
