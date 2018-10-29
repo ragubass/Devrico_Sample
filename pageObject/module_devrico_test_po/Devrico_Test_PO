@@ -1,0 +1,408 @@
+/**
+ * Created by ragu.s on 29/10/2018.
+ * Test Task for Devrico
+ */
+
+var testloc = require('../../uiMap/uimap-devrico-test/devricoTestTaskLoc');
+
+var DevricoTestFlyout = function () {
+    var that = this;
+    this.setTestData = element(testloc.set_testdata_Txtbx);
+    this.spincoin = element(testloc.spin_coint_Btn);
+    this.rowtwofirsttxt = element(testloc.middle_row_first_number_txt);
+    this.rowtwosecondtxt = element(testloc.middle_row_second_number_txt);
+    this.rowtwothirdtxt = element(testloc.middle_row_third_number_txt);
+    this.rowtwofourthtxt = element(testloc.middle_row_fourth_number_txt);
+    this.rowtwofifthtxt = element(testloc.middle_row_fifth_number_txt);
+    this.wintxt = element(testloc.winbox_txt);
+
+
+
+    this.setCointData1 = function () {
+       var settestdata1 = '111';
+       that.spincoin.sendKeys(settestdata1);
+    };
+    this.clickSpinCointBtn = function () {
+            this.spincoin.click();
+    };
+
+    this.verifyResultFirstSet = function (tagstext1,tagstext2,tagstext3) {
+    var txt = 'win';
+    var losstxt = 'loss'
+    var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+    var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+    var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+    if(expect(firsttxt).toEqual(1),expect(secondtxt.toEqual(1),expect(thirdtxt.toEqual(1))))
+    console.log(txt)
+    else
+    console.log(losstxt)
+    };
+
+     this.verifyWinResultTxt = function (winresult) {
+               var winresulttxt = that.wintxt.get(winresult).getText();
+                if(expect(firsttxt).toEqual('Win 60 coins'))
+                            console.log('displays correct text')
+                            else
+                            console.log('displays incorrect result')
+                            };
+
+    this.setCointData2 = function () {
+           var settestdata2 = '1111';
+           that.spincoin.sendKeys(settestdata2);
+        };
+    this.verifyResultSecondSet = function (tagstext1,tagstext2,tagstext3,tagstext4) {
+        var txt = 'win';
+        var losstxt = 'loss'
+        var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+        var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+        var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+        var forthtxt = that.rowtwofourthtxt.get(tagstext4).getText();
+        if(expect(firsttxt).toEqual(1),expect(secondtxt.toEqual(1),expect(thirdtxt.toEqual(1),expect(forthtxt.toEqual(1))))
+        console.log(txt)
+        else
+        console.log(losstxt)
+        };
+         this.verifyWinResultTxt = function (winresult) {
+                   var winresulttxt = that.wintxt.get(winresult).getText();
+                    if(expect(firsttxt).toEqual('Win 80 coins'))
+                                console.log('displays correct text')
+                                else
+                                console.log('displays incorrect result')
+                                };
+
+     this.setCointData3 = function () {
+                   var settestdata3 = '11111';
+                   that.spincoin.sendKeys(settestdata3);
+     };
+     this.verifyResultSecondSet = function (tagstext1,tagstext2,tagstext3,tagstext4,tagstext5) {
+                var txt = 'win';
+                var losstxt = 'loss'
+                var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+                var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+                var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+                var forthtxt = that.rowtwofourthtxt.get(tagstext4).getText();
+                var fifthtxt = that.rowtwofifthtxt.get(tagstext5).getText();
+                if(expect(firsttxt).toEqual(1),expect(secondtxt.toEqual(1),expect(thirdtxt.toEqual(1),expect(forthtxt.toEqual(1),expect(fifthtxt.toEqual(1))))
+                console.log(txt)
+                else
+                console.log(losstxt)
+     };
+
+           this.verifyWinResultTxt = function (winresult) {
+               var winresulttxt = that.wintxt.get(winresult).getText();
+                if(expect(firsttxt).toEqual('Win 100 coins'))
+                            console.log('displays correct text')
+                            else
+                            console.log('displays incorrect result')
+                            };
+
+     this.setCointData4 = function () {
+            var settestdata4 = '222';
+            that.spincoin.sendKeys(settestdata4);
+         };
+         this.clickSpinCointBtn = function () {
+                 this.spincoin.click();
+         };
+
+         this.verifyResultFirstSet = function (tagstext1,tagstext2,tagstext3) {
+         var txt = 'win';
+         var losstxt = 'loss'
+         var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+         var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+         var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+         if(expect(firsttxt).toEqual(2,expect(secondtxt.toEqual(2),expect(thirdtxt.toEqual(2))))
+         console.log(txt)
+         else
+         console.log(losstxt)
+         };
+      this.verifyWinResultTxt = function (winresult) {
+                var winresulttxt = that.wintxt.get(winresult).getText();
+                 if(expect(firsttxt).toEqual('Win 120 coins'))
+                             console.log('displays correct text')
+                             else
+                             console.log('displays incorrect result')
+                             };
+
+         this.setCointData5 = function () {
+                var settestdata5 = '2222';
+                that.spincoin.sendKeys(settestdata5);
+             };
+         this.verifyResultSecondSet = function (tagstext1,tagstext2,tagstext3,tagstext4) {
+             var txt = 'win';
+             var losstxt = 'loss'
+             var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+             var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+             var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+             var forthtxt = that.rowtwofourthtxt.get(tagstext4).getText();
+             if(expect(firsttxt).toEqual(2),expect(secondtxt.toEqual(2),expect(thirdtxt.toEqual(2),expect(forthtxt.toEqual(2))))
+             console.log(txt)
+             else
+             console.log(losstxt)
+             };
+       this.verifyWinResultTxt = function (winresult) {
+                 var winresulttxt = that.wintxt.get(winresult).getText();
+                  if(expect(firsttxt).toEqual('Win 160 coins'))
+                              console.log('displays correct text')
+                              else
+                              console.log('displays incorrect result')
+                              };
+
+          this.setCointData6 = function () {
+                        var settestdata6 = '22222';
+                        that.spincoin.sendKeys(settestdata6);
+          };
+          this.verifyResultSecondSet = function (tagstext1,tagstext2,tagstext3,tagstext4,tagstext5) {
+                     var txt = 'win';
+                     var losstxt = 'loss'
+                     var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+                     var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+                     var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+                     var forthtxt = that.rowtwofourthtxt.get(tagstext4).getText();
+                     var fifthtxt = that.rowtwofifthtxt.get(tagstext5).getText();
+                     if(expect(firsttxt).toEqual(2),expect(secondtxt.toEqual(2),expect(thirdtxt.toEqual(2),expect(forthtxt.toEqual(2),expect(fifthtxt.toEqual(2))))
+                     console.log(txt)
+                     else
+                     console.log(losstxt)
+          };
+      this.verifyWinResultTxt = function (winresult) {
+                var winresulttxt = that.wintxt.get(winresult).getText();
+                 if(expect(firsttxt).toEqual('Win 200 coins'))
+                             console.log('displays correct text')
+                             else
+                             console.log('displays incorrect result')
+                             };
+
+     this.setCointData7 = function () {
+                 var settestdata7 = '333';
+                 that.spincoin.sendKeys(settestdata7);
+              };
+              this.clickSpinCointBtn = function () {
+                      this.spincoin.click();
+              };
+
+              this.verifyResultFirstSet = function (tagstext1,tagstext2,tagstext3) {
+              var txt = 'win';
+              var losstxt = 'loss'
+              var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+              var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+              var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+              if(expect(firsttxt).toEqual(3),expect(secondtxt.toEqual(3),expect(thirdtxt.toEqual(3))))
+              console.log(txt)
+              else
+              console.log(losstxt)
+              };
+      this.verifyWinResultTxt = function (winresult) {
+                var winresulttxt = that.wintxt.get(winresult).getText();
+                 if(expect(firsttxt).toEqual('Win 180 coins'))
+                             console.log('displays correct text')
+                             else
+                             console.log('displays incorrect result')
+                             };
+
+              this.setCointData8 = function () {
+                     var settestdata5 = '3333';
+                     that.spincoin.sendKeys(settestdata8);
+                  };
+              this.verifyResultSecondSet = function (tagstext1,tagstext2,tagstext3,tagstext4) {
+                  var txt = 'win';
+                  var losstxt = 'loss'
+                  var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+                  var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+                  var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+                  var forthtxt = that.rowtwofourthtxt.get(tagstext4).getText();
+                  if(expect(firsttxt).toEqual(3),expect(secondtxt.toEqual(3),expect(thirdtxt.toEqual(3),expect(forthtxt.toEqual(3))))
+                  console.log(txt)
+                  else
+                  console.log(losstxt)
+                  };
+       this.verifyWinResultTxt = function (winresult) {
+                 var winresulttxt = that.wintxt.get(winresult).getText();
+                  if(expect(firsttxt).toEqual('Win 240 coins'))
+                              console.log('displays correct text')
+                              else
+                              console.log('displays incorrect result')
+                              };
+
+               this.setCointData9 = function () {
+                             var settestdata9 = '33333';
+                             that.spincoin.sendKeys(settestdata9);
+               };
+               this.verifyResultSecondSet = function (tagstext1,tagstext2,tagstext3,tagstext4,tagstext5) {
+                          var txt = 'win';
+                          var losstxt = 'loss'
+                          var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+                          var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+                          var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+                          var forthtxt = that.rowtwofourthtxt.get(tagstext4).getText();
+                          var fifthtxt = that.rowtwofifthtxt.get(tagstext5).getText();
+                          if(expect(firsttxt).toEqual(3),expect(secondtxt.toEqual(3),expect(thirdtxt.toEqual(3),expect(forthtxt.toEqual(3),expect(fifthtxt.toEqual(3))))
+                          console.log(txt)
+                          else
+                          console.log(losstxt)
+               };
+      this.verifyWinResultTxt = function (winresult) {
+                var winresulttxt = that.wintxt.get(winresult).getText();
+                 if(expect(firsttxt).toEqual('Win 300 coins'))
+                             console.log('displays correct text')
+                             else
+                             console.log('displays incorrect result')
+                             };
+
+     this.setCointData10 = function () {
+                 var settestdata10 = '444';
+                 that.spincoin.sendKeys(settestdata10);
+              };
+              this.clickSpinCointBtn = function () {
+                      this.spincoin.click();
+              };
+
+              this.verifyResultFirstSet = function (tagstext1,tagstext2,tagstext3) {
+              var txt = 'win';
+              var losstxt = 'loss'
+              var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+              var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+              var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+              if(expect(firsttxt).toEqual(4),expect(secondtxt.toEqual(4),expect(thirdtxt.toEqual(4))))
+              console.log(txt)
+              else
+              console.log(losstxt)
+              };
+      this.verifyWinResultTxt = function (winresult) {
+                var winresulttxt = that.wintxt.get(winresult).getText();
+                 if(expect(firsttxt).toEqual('Win 240 coins'))
+                             console.log('displays correct text')
+                             else
+                             console.log('displays incorrect result')
+                             };
+
+              this.setCointData11 = function () {
+                     var settestdata11 = '2222';
+                     that.spincoin.sendKeys(settestdata11);
+                  };
+              this.verifyResultSecondSet = function (tagstext1,tagstext2,tagstext3,tagstext4) {
+                  var txt = 'win';
+                  var losstxt = 'loss'
+                  var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+                  var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+                  var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+                  var forthtxt = that.rowtwofourthtxt.get(tagstext4).getText();
+                  if(expect(firsttxt).toEqual(4),expect(secondtxt.toEqual(4),expect(thirdtxt.toEqual(4),expect(forthtxt.toEqual(4))))
+                  console.log(txt)
+                  else
+                  console.log(losstxt)
+                  };
+
+       this.verifyWinResultTxt = function (winresult) {
+                 var winresulttxt = that.wintxt.get(winresult).getText();
+                  if(expect(firsttxt).toEqual('Win 320 coins'))
+                              console.log('displays correct text')
+                              else
+                              console.log('displays incorrect result')
+                              };
+
+               this.setCointData12 = function () {
+                             var settestdata12 = '44444';
+                             that.spincoin.sendKeys(settestdata12);
+               };
+               this.verifyResultSecondSet = function (tagstext1,tagstext2,tagstext3,tagstext4,tagstext5) {
+                          var txt = 'win';
+                          var losstxt = 'loss'
+                          var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+                          var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+                          var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+                          var forthtxt = that.rowtwofourthtxt.get(tagstext4).getText();
+                          var fifthtxt = that.rowtwofifthtxt.get(tagstext5).getText();
+                          if(expect(firsttxt).toEqual(4),expect(secondtxt.toEqual(4),expect(thirdtxt.toEqual(4),expect(forthtxt.toEqual(4),expect(fifthtxt.toEqual(4))))
+                          console.log(txt)
+                          else
+                          console.log(losstxt)
+               };
+     this.verifyWinResultTxt = function (winresult) {
+               var winresulttxt = that.wintxt.get(winresult).getText();
+                if(expect(firsttxt).toEqual('Win 400 coins'))
+                            console.log('displays correct text')
+                            else
+                            console.log('displays incorrect result')
+                            };
+
+    this.setCointData13 = function () {
+                var settestdata13 = '555';
+                that.spincoin.sendKeys(settestdata13);
+             };
+             this.clickSpinCointBtn = function () {
+                     this.spincoin.click();
+             };
+
+             this.verifyResultFirstSet = function (tagstext1,tagstext2,tagstext3) {
+             var txt = 'win';
+             var losstxt = 'loss'
+             var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+             var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+             var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+             if(expect(firsttxt).toEqual(5),expect(secondtxt.toEqual(5),expect(thirdtxt.toEqual(5))))
+             console.log(txt)
+             else
+             console.log(losstxt)
+             };
+      this.verifyWinResultTxt = function (winresult) {
+                var winresulttxt = that.wintxt.get(winresult).getText();
+                 if(expect(firsttxt).toEqual('Win 300 coins'))
+                             console.log('displays correct text')
+                             else
+                             console.log('displays incorrect result')
+                             };
+
+             this.setCointData14 = function () {
+                    var settestdata14 = '5555';
+                    that.spincoin.sendKeys(settestdata14);
+                 };
+             this.verifyResultSecondSet = function (tagstext1,tagstext2,tagstext3,tagstext4) {
+                 var txt = 'win';
+                 var losstxt = 'loss'
+                 var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+                 var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+                 var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+                 var forthtxt = that.rowtwofourthtxt.get(tagstext4).getText();
+                 if(expect(firsttxt).toEqual(5),expect(secondtxt.toEqual(5),expect(thirdtxt.toEqual(5),expect(forthtxt.toEqual(5))))
+                 console.log(txt)
+                 else
+                 console.log(losstxt)
+                 };
+       this.verifyWinResultTxt = function (winresult) {
+                 var winresulttxt = that.wintxt.get(winresult).getText();
+                  if(expect(firsttxt).toEqual('Win 400 coins'))
+                              console.log('displays correct text')
+                              else
+                              console.log('displays incorrect result')
+                              };
+
+              this.setCointData15 = function () {
+                            var settestdata15 = '55555';
+                            that.spincoin.sendKeys(settestdata15);
+              };
+              this.verifyResultSecondSet = function (tagstext1,tagstext2,tagstext3,tagstext4,tagstext5) {
+                         var txt = 'win';
+                         var losstxt = 'loss'
+                         var firsttxt = that.rowtwofirsttxt.get(tagstext1).getText();
+                         var secondtxt = that.rowsecondtxt.get(tagstext2).getText();
+                         var thirdtxt = that.rowtwothirdtxt.get(tagstext3).getText();
+                         var forthtxt = that.rowtwofourthtxt.get(tagstext4).getText();
+                         var fifthtxt = that.rowtwofifthtxt.get(tagstext5).getText();
+                         if(expect(firsttxt).toEqual(5),expect(secondtxt.toEqual(5),expect(thirdtxt.toEqual(5),expect(forthtxt.toEqual(5),expect(fifthtxt.toEqual(5))))
+                         console.log(txt)
+                         else
+                         console.log(losstxt)
+              };
+    this.verifyWinResultTxt = function (winresult) {
+                     var winresulttxt = that.wintxt.get(winresult).getText();
+                      if(expect(firsttxt).toEqual('Win 500 coins'))
+                                  console.log('displays correct text')
+                                  else
+                                  console.log('displays incorrect result')
+                                  };
+
+
+
+};
+
+module.exports = CollapsibleDataFlyout;

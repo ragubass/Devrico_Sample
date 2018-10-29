@@ -1,0 +1,15 @@
+/**
+ * Created by ragu.s on 29/10/2018.
+ */
+
+
+module.exports = {
+    set_testdata_Txtbx = by.id('testdata')
+    spin_coint_Btn = by.id('spinButton')
+    middle_row_first_number_txt = by.css('#reel1 > div.notch.notch2')
+    middle_row_second_number_txt = by.css('#reel2 > div.notch.notch2')
+    middle_row_third_number_txt = by.css('#reel3 > div.notch.notch2')
+    middle_row_fourth_number_txt = by.css('#reel4 > div.notch.notch2')
+    middle_row_fifth_number_txt = by.css('#reel5 > div.notch.notch2')
+    winbox_txt = by.id('winbox')
+};
